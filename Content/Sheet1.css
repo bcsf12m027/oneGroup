@@ -1,0 +1,10 @@
+﻿body
+{
+    background-image: url("~/Content/Images/header.jpg");
+}
+
+#backImage 
+{
+    background-repeat:no-repeat;
+    background-size:cover;
+}
