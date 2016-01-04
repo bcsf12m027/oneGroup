@@ -14,9 +14,11 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <title></title>
+    <link href="~/Content/navbarcolor.css" rel="stylesheet" />
+
 </head>
 <body>
-    <img class="img-responsive" src="~/Content/Images/header.jpg" alt="BackGround Image" style='position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:-1; border:0;' />
+    <img class="img-responsive" src="~/Content/Images/header.jpg" alt="BackGround Image" style='position:fixed; top:0px; left:0px; width:100%; height:100%; z-index:-1; border:0;' />
 
     <div class="container">
 
@@ -29,7 +31,7 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <a class="navbar-brand" href="/Home/Start">One Group</a>
+                <a class="navbar-brand" href="/Home/Start">OneGroupOneCommunity</a>
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
                         <li><a href="/Home/Login">Login</a></li>
@@ -41,11 +43,5 @@
         @RenderBody()
 
     </div>
-    <div style="bottom:0px" id="footer" class="navbar-fixed-bottom">
-        <hr />
-        <div class="container">
-            <p style="color:white">&copy; 2016 - One Group One Community</p>
-        </div>
-    </div>>
 </body>
 </html>
