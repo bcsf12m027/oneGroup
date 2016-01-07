@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/stdGroup.cshtml";
+}
+
+<div style="margin-top:70px;">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="panel panel-default col-sm-6" style="margin-top: 40px;height:550px">
+
+            <div class="panel-heading">
+                <blockquote>
+                    <h1>Contact us</h1>
+                    <footer>Fill the form below keenly and we will get back to you soon.</footer>
+                </blockquote>
+            </div>
+
+            <div class="panel-body" style="padding-bottom:20px;">
+                <form method="post" class="form-horizontal " >
+
+                    <div class="form-group">
+                        <label for="username">Name</label>
+                        <input type="text" placeholder="Name" class="form-control" style="width:50%" id="username" name="n" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" placeholder="xyz@gmail.com" id="email" style="width:50%" class="form-control" name="a" />
+                    </div>
+                    <div class="form-group">
+                        <label for="msg">Message</label>
+                        <textarea typeof="textarea" id="msg" class="form-control" name="a" rows="5" style="width:50%"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary col-sm-3">Submit Form</button>
+                    
+                    
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
