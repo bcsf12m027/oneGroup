@@ -1,4 +1,15 @@
-﻿<div style="margin-top:70px;">
+﻿
+@{
+    
+
+    EAD_Project.Models.oneGroupDB db = new EAD_Project.Models.oneGroupDB();
+    var name1 = Session["username"];
+    string name = name1.ToString();
+    int sem = db.getSemester(name);
+}
+
+
+<div style="margin-top:70px;">
     <div class="container">
 
         <div class="row">
@@ -12,19 +23,48 @@
                     <h3 style="text-align:center;">Select Subject</h3>
                     <br />
                 </div>
-
-                <div class="panel-body" style="padding-bottom:20px;">
-                    <div class="row">
-                        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GroupHome","Student")'" style="height:150px;width:25%;margin-left:200px"><p class="degree" style="font-size:72px">EAD</p></button>
-                        <button type="button" class="btn btn-primary" style="height: 150px; width: 25%; margin-left: 25px"><p class="degree" style="font-size:72px">CC</p></button>
-                    </div>
-                    <div class="row" style="margin-top:25px">
-                        <button type="button" class="btn btn-primary" style="height: 150px; width: 25%; margin-left: 200px"><p class="degree" style="font-size:72px">MC</p></button>
-                        <button type="button" class="btn btn-primary" style="height:150px;width:25%;margin-left:25px"><p class="degree" style="font-size:72px">CV</p></button>
-                    </div>
+                
+                
+               
+                @{if(sem==6)
+                  {
+                            <div class="panel-body" style="padding-bottom:20px;">
+                        <div class="row">
+                            <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GroupHome","Student")'" style="height:150px;width:25%;margin-left:100px"><p class="degree" style="font-size:72px">SP</p></button>
+                            <button type="button" class="btn btn-primary" style="height: 150px; width: 25%; margin-left: 25px"><p class="degree" style="font-size:72px">AI</p></button>
+                            <button type="button" class="btn btn-primary" style="height: 150px; width: 25%; margin-left: 25px"><p class="degree" style="font-size:72px">MIS</p></button>
+                        </div>
+                        <div class="row" style="margin-top:25px">
+                            <button type="button" class="btn btn-primary" style="height: 150px; width: 25%; margin-left: 100px"><p class="degree" style="font-size:72px">LA</p></button>
+                            <button type="button" class="btn btn-primary" style="height:150px;width:25%;margin-left:25px"><p class="degree" style="font-size:72px">CN</p></button>
+                            <button type="button" class="btn btn-primary" style="height: 150px; width: 25%; margin-left: 25px"><p class="degree" style="font-size:72px">DBA</p></button>
+                        </div>
 
    
-                </div>
+                    </div>
+                  }
+                  else if (sem == 7)
+                  {
+                        <div class="panel-body" style="padding-bottom:20px;">
+                        <div class="row">
+                            <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GroupHome","Student")'" style="height:150px;width:25%;margin-left:200px"><p class="degree" style="font-size:72px">EAD</p></button>
+                            <button type="button" class="btn btn-primary" style="height: 150px; width: 25%; margin-left: 25px"><p class="degree" style="font-size:72px">CC</p></button>
+                          
+                        </div>
+                        <div class="row" style="margin-top:25px">
+                            <button type="button" class="btn btn-primary" style="height: 150px; width: 25%; margin-left: 200px"><p class="degree" style="font-size:72px">CV</p></button>
+                            <button type="button" class="btn btn-primary" style="height:150px;width:25%;margin-left:25px"><p class="degree" style="font-size:72px">MC</p></button>
+                           
+                        </div>
+
+   
+                    </div>
+                  }
+                
+                     
+                }
+               
+              
 
 
             </div>

@@ -1,5 +1,67 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Sign Up";
+}
+@model EAD_Project.Models.student 
+
+
+@section signupPage
+{
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+ <script>
+
+     $(document).ready(function () {
+
+         $("#name").blur(function () {
+             f1();
+         });
+
+         $('#semester').blur(function () {
+            
+
+             var currVal = $('#semester').val();
+           
+
+             $.getJSON("/Home/isValidSemester?sem=" + currVal, function (retValue) {
+
+
+                 if (!retValue) {
+                     $('#semester').val(null);
+                     $("#semCheck").html("please select one of (1,2,3,4,5,6,7,8)");
+                     $("#semCheck").show();
+                 }
+
+             });
+
+
+
+         });
+
+
+         function f1() {
+
+             var username = $("#name").val();
+
+             $.getJSON("/Home/isSameUserName?un=" + username, function (retValue) {
+
+
+
+                 if (retValue) {
+
+                     $('#name').val(null);
+                     $("#info").html("Username already exists.");
+                     $("#info").show();
+
+                 }
+
+             });
+
+         }
+     });
+ </script>
+
+
+
 }
 
 <div style="margin-top:70px;">
@@ -10,37 +72,44 @@
             <div class="panel-heading">
                 <h3 style="text-align:center;">Sign Up</h3>
             </div>
-
+            
             <div class="panel-body" style="padding-bottom:20px;">
-                <form method="post" class="form-horizontal ">
+                <form method="post" class="form-horizontal " action="/Home/addStudentinDB">
 
                     <div class="form-group">
                         <label for="name">Username</label>
-                        <input type="text" placeholder="Username" class="form-control" id="name" name="n" />
+                        <input type="text" placeholder="Username" class="form-control" id="name" name="username"  required/>
+                        <p class="pull-right" role="alert" style="color:red" id="info" hidden="hidden" ></p> 
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" placeholder="Email" class="form-control" id="email" name="n" />
+                        <input type="email" placeholder="Email" class="form-control" id="email" name="email" required />
                     </div>
 
                     <div class="form-group">
                         <label for="rollNumber">Roll Number</label>
-                        <input type="text" placeholder="Roll Number" class="form-control" id="rollNumber" name="n" />
+                        <input type="text" placeholder="Roll Number" class="form-control" id="rollNumber" name="rollnumber" required />
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" placeholder="Password" id="password" class="form-control" name="a" />
+                        <input type="password" placeholder="Password" id="password" class="form-control" name="password" required />
                     </div>
                     <div class="form-group">
                         <label for="semester">Current Semester</label>
-                        <input type="text" placeholder="Current Semester" id="semester" class="form-control" name="a" />
+                        <input type="text" placeholder="Current Semester" id="semester" class="form-control" name="semester" required />
+                        <p class="pull-right" role="alert" style="color:red" id="semCheck" hidden="hidden"></p> 
+                    </div>
+                    <div class="form-group">
+                        <label for="degree">Degree</label>
+                        <input type="text" placeholder="CS/IT/SE/MCS" class="form-control" name="degree" required />
+                        <p class="pull-right" role="alert" style="color:red" id="degCheck" hidden="hidden"></p> 
                     </div>
                     <br />
                     <button type="submit" class="btn btn-primary col-sm-3">Sign Up</button>
 
                     <div class="container pull-right">
-                        <b>Already have an account?</b> <a href="/Home/Login">Login Here</a>
+                        <b>Already have an account?</b>   @Html.ActionLink("Login Here","Login", "Home") 
                     </div>
                 </form>
             </div>

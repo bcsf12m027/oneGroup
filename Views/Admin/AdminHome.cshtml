@@ -1,0 +1,446 @@
+﻿@{
+    Layout = "~/Views/Shared/stdGroup.cshtml";
+}
+@model EAD_Project.Models.teacher
+@section AdminHome
+{
+    
+     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+     <script>
+
+         $(document).ready(function () {
+
+         
+
+             $("#add").click(function () {
+                 
+                 $("#viewPanel").hide();
+                 $("#editProfilePanel").hide();
+                 $("#changePasswordPanel").hide();
+                 $("#classPanel").hide();
+                 $("#viewProfilePanel").hide();
+                 $("#fbPanel").hide();
+                 $("#fbb").hide();
+                 $("#addPanel").show();
+                
+             });
+
+
+
+             $("#view").click(function () {
+
+                 $("#addPanel").hide();
+                 $("#viewProfilePanel").hide();
+                 $("#editProfilePanel").hide();
+                 $("#changePasswordPanel").hide();
+                 $("#classPanel").hide();
+                 $("#fbPanel").hide();
+                 $("#fbb").hide();
+                 $("#viewPanel").show();
+             });
+
+             $("#vp").click(function () {
+
+                 $("#addPanel").hide();
+                 $("#viewPanel").hide();
+                 $("#editProfilePanel").hide();
+                 $("#changePasswordPanel").hide();
+                 $("#classPanel").hide();
+                 $("#fbb").hide();
+                 $("#fbPanel").hide();
+                 $("#viewProfilePanel").show();
+             });
+
+             $("#ep").click(function () {
+
+                 $("#addPanel").hide();
+                 $("#viewPanel").hide();
+                 $("#viewProfilePanel").hide();
+                 $("#changePasswordPanel").hide();
+                 $("#fbPanel").hide();
+                 $("#classPanel").hide();
+                 $("#fbb").hide();
+                 $("#editProfilePanel").show();
+             });
+
+             $("#cp").click(function () {
+
+                 $("#addPanel").hide();
+                 $("#viewPanel").hide();
+                 $("#classPanel").hide();
+                 $("#viewProfilePanel").hide();
+                 $("#editProfilePanel").hide();
+                 $("#fbb").hide();
+                 $("#fbPanel").hide();
+                 $("#changePasswordPanel").show();
+             });
+
+
+
+             $("#sgg").click(function () {
+
+                 $("#classPanel").hide();
+                 $("#addPanel").hide();
+                 $("#viewPanel").hide();
+                 $("#viewProfilePanel").hide();
+                 $("#editProfilePanel").hide();
+                 $("#changePasswordPanel").hide();
+                 $("#fbb").show();
+                 $("#fbPanel").hide();
+                 $("#fbb").load("/Admin/Feedback", "#feedback");
+             });
+
+             
+
+
+          
+         });
+     </script>    
+}
+
+<div class="container" style="margin-top:100px;">
+
+    <div class="row ">
+
+        <div class="col-sm-2">
+
+
+
+            <div class="panel panel-default" style="height: 200px;width:300px; background:#cac6c3;">
+                <div class="panel-heading">
+                    <h4 style="text-align:left;color:maroon" >Profile</h4>
+                </div>
+                <div class="panel-body">
+                    <ul class="nav">
+
+                        <li><a style="text-align:left;color:maroon" id="vp">View Profile</a></li>
+                        <li><a style="text-align:left;color:maroon" id="ep">Edit Profile</a></li>
+                        <li><a style="text-align:left;color:maroon" id="cp">Change Password</a></li>
+     
+
+
+                    </ul>
+                </div>
+            </div> 
+
+
+
+            <div class="panel panel-default" style="height: 250px;width:300px; background:#cac6c3;">
+                <div class="panel-heading">
+                    <h4 style="text-align:left;color:maroon" >Student Panel</h4>
+                </div>
+                <div class="panel-body">
+                    <ul class="nav">
+            
+                       
+                        <li><a style="text-align:left;color:maroon" id="add">Add New Student</a></li>
+                        <li><a style="text-align:left;color:maroon" id="view">View All Student</a></li>
+                        <li><a style="text-align:left;color:maroon" id="update">Update Student info</a></li>
+                           
+
+                    </ul>
+                </div>
+            </div> 
+
+        </div>
+
+        <div class="col-sm-2" id="fbPanel">
+
+            <div class="panel panel-default" style="height: 120px;width:300px;margin-left:150px ;background:#cac6c3;">
+                <div class="panel-heading">
+                    <h4 style="text-align:left;color:maroon">Feedback Panel</h4>
+                </div>
+                <div class="panel-body">
+                    <ul class="nav">
+
+                        <li><a style="text-align:left;color:maroon" id="sgg">View Suggestions</a></li>
+
+
+
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default" style="height: 330px;width:300px;margin-left:150px ;background:#cac6c3;">
+                <div class="panel-heading">
+                    <h4 style="text-align:left;color:maroon">classes panel</h4>
+                </div>
+                <div class="panel-body">
+                    <ul class="nav"></ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-8">
+
+
+            <div class="panel panel-default col-sm-6"  style="margin-left: 300px; width: 600px; " hidden="hidden" id="addPanel">
+
+                <div class="panel-heading">
+                    <h3 style="text-align:center;color:maroon">Add new student</h3>
+                </div>
+
+                <div class="panel-body" style="padding-bottom:20px;">
+                    <form method="post" class="form-horizontal " action="/Home/addStudentinDB">
+
+                        <div class="form-group">
+                            <label for="name">Username</label>
+                            <input type="text"   placeholder="Username" class="form-control" id="name" name="username" required />
+                            <p class="pull-right" role="alert" style="color:red" id="info" hidden="hidden"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" placeholder="Email" class="form-control" id="email" name="email" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rollNumber">Roll Number</label>
+                            <input type="text" placeholder="Roll Number" class="form-control" id="rollNumber" name="rollnumber" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" placeholder="Password" id="password" class="form-control" name="password" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="semester">Current Semester</label>
+                            <input type="text" placeholder="Current Semester" id="semester" class="form-control" name="semester" required />
+                            <p class="pull-right" role="alert" style="color:red" id="semCheck" hidden="hidden"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="degree">Degree</label>
+                            <input type="text" placeholder="CS/IT/SE/MCS" class="form-control" name="degree" required />
+                            <p class="pull-right" role="alert" style="color:red" id="degCheck" hidden="hidden"></p>
+                        </div>
+                        <br />
+                        <button type="submit" class="btn btn-primary col-sm-3">Sign Up</button>
+
+                       
+                    </form>
+                </div>
+
+            </div>
+
+
+            <div hidden="hidden" id="fbb" >
+            </div>
+
+
+                <div class="panel panel-default" style="margin-left: 250px; width: 600px; background: #cac6c3" hidden="hidden" id="viewPanel">
+
+                    @{
+                        EAD_Project.Models.oneGroupDB db = new EAD_Project.Models.oneGroupDB();
+                        List<EAD_Project.Models.student> st = db.allStudentList();
+                        string name = "";
+                        if (Session["username"] != null)
+                        {
+                            name = (Session["username"]).ToString();
+
+                        }
+
+                        EAD_Project.Models.teacher thisTeacher = new EAD_Project.Models.teacher();
+                        thisTeacher = db.getTeacherInfo(name);
+
+                        if (thisTeacher == null)
+                        {
+                            thisTeacher.username = "";
+                            thisTeacher.email = "";
+                        }
+
+
+
+                    }
+                    <div class="panel-heading">
+                        <h3 style="text-align:center;color:maroon">Enrolled Students</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <table class="table  table-hover">
+
+                            <tr>
+
+                                <th style="color:maroon">Username</th>
+                                <th style="color:maroon">Email</th>
+                                <th style="color:maroon">Roll Number</th>
+                                <th style="color:maroon">Semester</th>
+                                <th style="color:maroon">Degree</th>
+                            </tr>
+
+
+                            @foreach (EAD_Project.Models.student ss in st)
+                            {
+                                <tr>
+                                    <td>@ss.username</td>
+                                    <td>@ss.email</td>
+                                    <td>@ss.rollnumber</td>
+                                    <td>@ss.semester</td>
+                                    <td>@ss.degree</td>
+                                </tr>
+
+
+                            }
+
+
+
+
+                        </table>
+                    </div>
+
+                </div>
+
+
+                <div class="panel panel-default" style="margin-left: 250px; width: 600px; background: #cac6c3" hidden="hidden" id="viewProfilePanel">
+                    <div class="panel-heading">
+                        <h3 style="text-align:center;color:maroon">@Session["username"]</h3>
+                    </div>
+
+
+
+
+
+                    <div class="panel-body">
+
+                        <table class="table  table-hover">
+
+                            <tr>
+
+                                <th style="color:maroon">Username</th>
+                                <th style="color:maroon">@thisTeacher.username</th>
+
+                            </tr>
+                            <tr>
+                                <th style="color:maroon">Email</th>
+                                <th style="color:maroon">@thisTeacher.email</th>
+
+                            </tr>
+                        </table>
+
+                    </div>
+
+
+
+
+
+                </div>
+
+
+
+                <div class="panel panel-default" style="margin-left: 250px; width: 600px; background: #cac6c3" hidden="hidden" id="editProfilePanel">
+                    <div class="panel-heading">
+                        <h3 style="text-align:center;color:maroon">@Session["username"]</h3>
+                    </div>
+
+
+
+
+
+                    <div class="panel-body">
+
+                        <form method="post" action="/Admin/updateStudent">
+
+                            <div class="form-group">
+
+
+                                <label for="name">Username</label>
+                                <input type="text" value=@thisTeacher.username class="form-control" id="name" name="username" readonly="readonly" />
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" placeholder="Email" value=@thisTeacher.email class="form-control" id="email" name="email" required />
+                            </div>
+
+
+                            <br />
+                            <button type="submit" id="loginBtn" class="btn btn-primary col-sm-3">update info</button>
+
+                        </form>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+
+                @{
+                    string hidden = "hidden=\"hidden\"";
+
+
+                    if (Session["passCheck"] != null && !(bool)Session["passCheck"])
+                    {
+                        hidden = "";
+                    }
+
+
+
+                    <div class="panel panel-default" style="margin-left: 250px; width: 600px;background: #cac6c3" @hidden id="changePasswordPanel">
+                        <div class="panel-heading">
+                            <h3 style="text-align:center;color:maroon">Change Password</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <form method="post" action="/Admin/changePassword">
+
+                                <div class="form-group">
+
+
+                                    <label for="name">Current Password</label>
+                                    <input type="password" class="form-control" id="name" name="currp" required />
+
+                                </div>
+                                <div class="form-group">
+
+
+                                    <label for="cp1">New Password</label>
+                                    <input type="password" class="form-control" id="cp1" name="changep1" required />
+
+                                </div>
+                                <div class="form-group">
+
+
+                                    <label for="cp2">Conform New Password</label>
+                                    <input type="password" class="form-control" id="cp2" name="changep2" required />
+
+                                </div>
+                                <br />
+
+                                @if (Session["passCheck"] != null && !(bool)Session["passCheck"])
+                                {
+                                    <p class="pull-right" role="alert" style="color:red" id="info">passwords didn't match</p>
+                                }
+
+                                <br />
+                                <button type="submit" id="loginBtn" class="btn btn-primary col-sm-3">update Password</button>
+
+                            </form>
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+                }
+
+
+
+
+
+
+
+            </div>
+
+</div>
+    </div>
+
+
+

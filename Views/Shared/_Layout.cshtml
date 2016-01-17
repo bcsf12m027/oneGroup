@@ -6,6 +6,9 @@
 
 <html>
 <head>
+    @RenderSection("signupPage", required: false);
+
+    @RenderSection("loginPage", required: false);
     <meta name="viewport" content="width=device-width" />
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -15,6 +18,8 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/navbarcolor.css" rel="stylesheet" />
+    <script src="~/Scripts/dobPicker.js"></script>
+    <script src="~/Scripts/dobPicker.min.js"></script>
 
 </head>
 <body>
@@ -34,8 +39,7 @@
                 <a class="navbar-brand" href="/Home/Start">OneGroupOneCommunity</a>
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
-                        <li><a href="/Home/Login"  style="font-size: 16px; color: maroon"><span class="glyphicon glyphicon-log-in" />Login</a></li>
-                        <li><a href="/Home/SignUp" style="font-size: 16px; color: maroon"><span class="glyphicon glyphicon-user" />SignUp</a></li>
+                       
                     </ul>
                 </div>
             </div>
